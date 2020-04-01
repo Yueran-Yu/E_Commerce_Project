@@ -43,37 +43,37 @@ noir = JSON.parse(noir_response)
 Category.all.each do |cat|
   commedy.each do |key, value|
     if value['category'] == cat.name
-      Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
+      p = Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
     end
   end
 
   crime.each do |key, value|
     if value['category'] == cat.name
-      Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
+       p = Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
     end
   end
 
   drama.each do |key, value|
     if value['category'] == cat.name
-      Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
+      p = Product.create(name: value['name'], description: value['description'], price: value['price'],image: value['img_link'], is_in_stock: true, category_id: cat.id)
     end
   end
 
   romance.each do |key, value|
     if value['category'] == cat.name
-      Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
+      p = Product.create(name: value['name'], description: value['description'], price: value['price'],image: value['img_link'], is_in_stock: true, category_id: cat.id)
     end
   end
 
   western.each do |key, value|
     if value['category'] == cat.name
-      Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
+      p = Product.create(name: value['name'], description: value['description'], price: value['price'],image: value['img_link'], is_in_stock: true, category_id: cat.id)
     end
   end
 
   noir.each do |key, value|
     if value['category'] == cat.name
-      Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
+      p = Product.create(name: value['name'], description: value['description'], price: value['price'],image: value['img_link'], is_in_stock: true, category_id: cat.id)
     end
   end
 end
