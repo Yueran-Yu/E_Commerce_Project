@@ -11,8 +11,13 @@
 
   <body>
   <header>
-<p> <%= link_to 'Home', root_path %></p>
-</header>
+      <p><%= link_to 'Home', root_path %></p>
+  </header>
+  <div class="container">
     <%= yield %>
+  </div>
   </body>
+  <footer>
+  Copyright Old Movies 2020 By Yueran Yu
+  </footer>
 </html>

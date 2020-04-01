@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   root to:'products#index'
 
-  get 'products/:id', to: 'products#show', as: 'product'
+  resources 'products', only: %i[index show]
   get 'categories', to: 'categories#index'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
