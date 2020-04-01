@@ -1,3 +1,7 @@
+<% @categories.each do |ca| %>
+  <h3><%= ca.name %></h3>
+<% end %>
+
 <div>
   <% if @products.empty? %>
     <p>There are no products available.</p>
