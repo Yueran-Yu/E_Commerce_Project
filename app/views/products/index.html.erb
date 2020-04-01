@@ -10,7 +10,7 @@
         <p>There are no products available.</p>
       <% else %>
         <% @products.each do |product|  %>
-        <%= image_tag product.active_image if product.active_image.attached? %>
+        <%= image_tag(product.active_image, alt:  "#{product.name}", style:"width:150px; height:200px;") if product.active_image.attached? %>
           <h3><%= link_to "#{product.name}", product %></h3>
        <% end %>
       <% end %>
