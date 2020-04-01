@@ -1,0 +1,8 @@
+
+
+    <h3><%= @product.name %></h3>
+    <h4><%= @product.price %></h4>
+    <h5><%= @product.description %></h5>
+    <h5><%= @product.discount_rate %></h5>
+    <h5><%= @product.is_in_stock %></h5>
+    <p><%= image_tag("#{@product.image}", :alt => "#{@product.name}", style:"width:250px; height:350px;") %></p>
