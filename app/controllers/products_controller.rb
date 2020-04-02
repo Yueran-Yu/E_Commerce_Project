@@ -1,11 +1,12 @@
 class ProductsController < ApplicationController
   def index
-    cate = params[:cate]
     @categories = Category.all
+
+    cate = params[:cate]
     if !cate.nil?
       @products = Product.where(category_id: cate)
     else
-      @products = Product.all
+      @products = Product.where(category_id: 1)
     end
   end
 

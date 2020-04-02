@@ -11,7 +11,19 @@
 
   <body>
   <header>
-      <p><%= link_to 'Home', root_path %></p>
+    <div class="navbar">
+      <ul>
+        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Aboout Us', permalink_path('about_us') %></li>
+        <li><%= link_to 'Contact', permalink_path('contact') %></li>
+
+        <li>Search Box</li>
+        <li>Cart</li>
+        <li>Register</li>
+        <li>Login</li>
+        <li>Your Account</li>
+      </ul>
+    </div>
   </header>
   <div class="container">
     <%= yield %>

@@ -1,24 +1,26 @@
-<div>
+<div class="flex-container">
   <div class="cat">
-  <% @categories.each do |ca| %>
-    <h3><%= link_to ca.name, products_path(cate: ca.id) %></h3>
-  <% end %>
+    <% @categories.each do |ca| %>
+      <h3><%= link_to ca.name, products_path(cate: ca.id) %></h3>
+    <% end %>
   </div>
 
-    <div class="prod">
-      <% if @products.empty? %>
-        <p>There are no products available.</p>
-      <% else %>
-        <% @products.each do |product|  %>
+
+    <% if @products.empty? %>
+      <p>There are no products available.</p>
+    <% else %>
+      <% @products.each do |product|  %>
+      <div class="prod">
         <% if product.image.empty? %>
-          <p><%= link_to image_tag(product.active_image, alt:  "#{product.name}", style:"width:150px; height:200px;"), product if product.active_image.attached? %></p>
+          <p><%= link_to image_tag(product.active_image, alt: "#{product.name}", style:"width:150px; height:200px;"), product if product.active_image.attached? %></p>
         <% else %>
-          <p><%= link_to image_tag("#{product.image}", alt:  "#{product.name}", style:"width:150px; height:200px;"), product %></p>
+          <p><%= link_to image_tag("#{product.image}", alt: "#{product.name}", style:"width:150px; height:200px;"), product %></p>
         <% end %>
-          <h3><%= link_to "#{product.name}", product %></h3>
-       <% end %>
-      <% end %>
-    </div>
+          <p><%= "#{product.category_id}" %> </p>
+          <p><%= link_to "#{product.name}", product %></p>
+      </div>
+     <% end %>
+    <% end %>
 </div>
 
 
