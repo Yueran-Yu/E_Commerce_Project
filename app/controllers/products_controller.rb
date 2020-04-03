@@ -4,9 +4,9 @@ class ProductsController < ApplicationController
 
     cate = params[:cate]
     if !cate.nil?
-      @products = Product.where(category_id: cate)
+      @products = Product.where(category_id: cate).order(:id).page(params[:page])
     else
-      @products = Product.where(category_id: 1)
+      @products = Product.order(:id).page(params[:page])
     end
   end
 

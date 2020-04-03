@@ -3,41 +3,14 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .container{
-  width: 80%;
+  width: 100%;
   margin:  0 auto;
-  border: 3px solid black;
+  border: 1px solid black;
   padding: 5px;
 }
 
-.navbar{
-  display: flex;
-  flex-wrap: nowrap;
-}
 
-.flex-container
-{
-  display: flex;
-  flex-wrap:wrap;
-  border: 3px solid rgb(20, 192, 49);
-  padding: 5px;
-  margin: 3px;
-}
 
-.flex-container > div{
-  margin: 10px;
-  font-size: 15px;
-  border: 3px solid rgb(192, 20, 20);
-  padding: 20px;
-}
 
-ul{
-  display: flex;
-  flex-wrap: nowrap;
-  list-style: none;
-}
 
-ul >li{
-  margin: 5px;
-  padding: 5px;
-  border: 3px solid rgb(20, 192, 49);
-}
+

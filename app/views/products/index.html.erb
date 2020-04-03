@@ -1,28 +1,61 @@
-<div class="flex-container">
-  <div class="cat">
-    <% @categories.each do |ca| %>
-      <h3><%= link_to ca.name, products_path(cate: ca.id) %></h3>
-    <% end %>
-  </div>
+<div >
+<ul class="list-group">
+  <% @categories.each do |ca| %>
+  <li >
+    <h3><%= link_to ca.name, products_path(cate: ca.id), class:"text-reset" %></h3>
+  </li>
+  <% end %>
+</ul>
+
 
 
     <% if @products.empty? %>
       <p>There are no products available.</p>
     <% else %>
+      <div class= "text-reset" >
+      <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <%= paginate @products, window: 2%>
+      </ul>
+      </nav>
+    </div >
+
+    <div class="row">
       <% @products.each do |product|  %>
-      <div class="prod">
-        <% if product.image.empty? %>
-          <p><%= link_to image_tag(product.active_image, alt: "#{product.name}", style:"width:150px; height:200px;"), product if product.active_image.attached? %></p>
-        <% else %>
-          <p><%= link_to image_tag("#{product.image}", alt: "#{product.name}", style:"width:150px; height:200px;"), product %></p>
-        <% end %>
-          <p><%= "#{product.category_id}" %> </p>
-          <p><%= link_to "#{product.name}", product %></p>
-      </div>
+      <div class="col-sm-6 col-md-4" >
+        <div class="thumbnail">
+          <% if product.image.empty? %>
+            <p><%= link_to image_tag(product.active_image, alt: "#{product.name}", style:"width:150px; height:200px;"), product if product.active_image.attached? %></p>
+          <% else %>
+            <p><%= link_to image_tag("#{product.image}", alt: "#{product.name}", style:"width:150px; height:200px;"), product %></p>
+          <% end %>
+          <div class="caption">
+            <p class= "text-reset" ><%= "#{product.category_id}" %> </p>
+            <p ><%= link_to "#{product.name}", product,class:"text-reset" %></p>
+          </div>
+        </div>
+    </div>
      <% end %>
-    <% end %>
+  <% end %>
+</div>
+    <div class= "text-reset" >
+    <%= paginate @products,window: 2 %>
+    </div>
+
+
+
+
 </div>
 
 
 
 
+
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
