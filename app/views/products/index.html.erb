@@ -1,61 +1,50 @@
-<div >
-<ul class="list-group">
-  <% @categories.each do |ca| %>
-  <li >
-    <h3><%= link_to ca.name, products_path(cate: ca.id), class:"text-reset" %></h3>
-  </li>
-  <% end %>
-</ul>
 
-
-
-    <% if @products.empty? %>
-      <p>There are no products available.</p>
-    <% else %>
-      <div class= "text-reset" >
-      <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <%= paginate @products, window: 2%>
-      </ul>
-      </nav>
-    </div >
 
     <div class="row">
-      <% @products.each do |product|  %>
-      <div class="col-sm-6 col-md-4" >
-        <div class="thumbnail">
-          <% if product.image.empty? %>
-            <p><%= link_to image_tag(product.active_image, alt: "#{product.name}", style:"width:150px; height:200px;"), product if product.active_image.attached? %></p>
-          <% else %>
-            <p><%= link_to image_tag("#{product.image}", alt: "#{product.name}", style:"width:150px; height:200px;"), product %></p>
-          <% end %>
-          <div class="caption">
-            <p class= "text-reset" ><%= "#{product.category_id}" %> </p>
-            <p ><%= link_to "#{product.name}", product,class:"text-reset" %></p>
-          </div>
+        <div class="col-sm-3">
+          <ul class ="list-group">
+            <% @categories.each do |ca| %>
+            <li class="list-group-item"> <h6><%= link_to ca.name, products_path(cate: ca.id), class:"text-reset"%></h6></li>
+            <% end %>
+          </ul>
         </div>
-    </div>
-     <% end %>
-  <% end %>
-</div>
-    <div class= "text-reset" >
-    <%= paginate @products,window: 2 %>
-    </div>
 
 
+      <div class="col">
+                    <div class="row">
+                      <%= paginate @products, window: 2%>
+                    </div>
+
+                    <div class="row d-flex justify-content-center">
+                        <% if @products.empty? %>
+                          <p>There are no products available.</p>
+                        <% else %>
+                          <% @products.each do |product|  %>
+                            <div>
+
+                                <div class="card" style="width: 18rem;">
+                                  <% if product.image.empty? %>
+                                    <p><%= link_to image_tag(product.active_image, alt: "#{product.name}", style:"width:150px; height:200px;"), product if product.active_image.attached? %></p>
+                                  <% else %>
+                                    <p><%= link_to image_tag("#{product.image}", alt: "#{product.name}", style:"width:150px; height:200px;"), product %></p>
+                                  <% end %>
+                                  <div class="card-body">
+                                      <h6 class="card-title"><%= link_to "#{product.name}", product,class:"text-reset" %></h6>
+                                      <p class="card-text">Price: $555 </p>
+                                  </div>
+                                  <div class="card-body">
+                                      <a href="#" class="card-link">Add to the Cart</a>
+                                  </div>
+                                </div>
 
 
-</div>
+                            </div>
+                          <% end %>
+                        <% end %>
+                    </div>
 
-
-
-
-
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
+                <div class="row">
+                  <%= paginate @products,window: 2 %>
+                </div>
+      </div>
+   </div>
