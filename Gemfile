@@ -28,6 +28,7 @@ gem 'kaminari'
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
+gem 'image_processing'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'activeadmin' # The Admin Dashboard gem
 gem 'devise' # authentication gem

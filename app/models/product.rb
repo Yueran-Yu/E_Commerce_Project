@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :category
   has_many :order_products
-  validates :name, :is_in_stock,:image, presence: true
+  validates :name, :is_in_stock, presence: true
   validates :price, numericality: true
   has_one_attached :active_image
 

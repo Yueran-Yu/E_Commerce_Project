@@ -1,7 +1,7 @@
  <!-- Begin Bootstrap Navbar -->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-      <%= link_to 'Nostalgia Film', root_path, class:"navbar-brand "  %>
+      <%= link_to 'Nostalgia Film', root_path, class:"navbar-brand text-info font-weight-bold"  %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,39 +9,38 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav m-auto ">
           <li class="nav-item active">
-           <%= link_to 'Home', root_path, class:"nav-link active"  %><span class="sr-only">(current)</span>
+           <%= link_to 'Home', root_path, class:"nav-link active text-muted"  %><span class="sr-only">(current)</span>
           </li>
           <li class="nav-item">
-           <%= link_to 'About', permalink_path('about_us'), class:"nav-link text-reset" %>
+           <%= link_to 'About', permalink_path('about_us'), class:"nav-link text-muted" %>
           </li>
           <li class="nav-item">
-          <%= link_to 'Contact Us', permalink_path('contact'), class:"nav-link  text-reset" %>
+          <%= link_to 'Contact Us', permalink_path('contact'), class:"nav-link  text-muted" %>
           </li>
           <li class="nav-item">
-          <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2 ml-3 " type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-        </form>
+          <form class="form-inline my-2 my-lg-0 pt-1">
+                <%= render partial:"products/search_form" %>
+          </form>
           </li>
           <li class="nav-item">
-          <%= link_to 'My Cart', permalink_path('contact'), class:"nav-link text-reset" %>
+              <%= link_to '', permalink_path('contact'), class: "nav-link fa fa-shopping-cart icon-cog "%>
           </li>
           <li class="nav-item">
-            <%= link_to 'Register', permalink_path('contact'), class:"nav-link text-reset" %>
+            <%= link_to 'Register', permalink_path('contact'), class:"nav-link text-muted" %>
           </li>
           <li class="nav-item">
-          <%= link_to 'Login', permalink_path('contact'), class:"nav-link text-reset" %>
+          <%= link_to 'Login', permalink_path('contact'), class:"nav-link text-muted" %>
           </li>
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             My Account
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">My Order</a>
-              <a class="dropdown-item" href="#">My Address</a>
+            <div class="dropdown-menu text-muted" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item text-muted" href="#">My Order</a>
+              <a class="dropdown-item text-muted" href="#">My Address</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Personal Information</a>
+              <a class="dropdown-item " href="#">Personal Information</a>
             </div>
           </li>
 
