@@ -1,8 +1,18 @@
 
 
-    <h3><%= @product.name %></h3>
-    <h4><%= "$#{@product.price}" %></h4>
-    <h5><%= @product.description %></h5>
-    <h5><%= @product.discount_rate %></h5>
-    <h5><%= @product.is_in_stock %></h5>
-    <p><%= image_tag("#{@product.image}", :alt => "#{@product.name}", style:"width:250px; height:350px;") %></p>
+
+
+
+
+
+
+<div class="row mr-2 ml-2 mt-5 pt-5">
+  <div class=" col-lg-4 "><p><%= image_tag("#{@product.image}", :alt => "#{@product.name}", style:"width:250px; height:350px;") %></p></div>
+  <div class="col">
+    <div class="row"><h6><%= @product.name %></h6></div>
+    <div class="row"><p><%= "$#{@product.price}" %></p></div>
+    <div class="row"><p><%= @product.is_in_stock %></p></div>
+    <div class="row"><p><%= @product.discount_rate %></p></div>
+    <div class="row"><small><%= @product.description %></small></div>
+  </div>
+</div>

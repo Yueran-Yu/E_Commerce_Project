@@ -3,21 +3,49 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
-body {
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  position: relative;
   height: 100%;
+
+}
+
+.container-md{
+  /*保证footer是相对于container位置绝对定位*/
+  height:100%;
+  /*设置padding-bottom值大于等于footer的height值，以保证main的内容能够全部显示出来而不被footer遮盖；*/
+  padding-top: 50px;
+  padding-bottom: 220px;
+  box-sizing: border-box;
 }
 
 
 .footer {
+  position: absolute;
   bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
   width: 100%;
-  height: 80px;
+  height: 80px;  /* footer的高度一定要是固定值*/
   background: #fafafa;
   border-top: solid 1px #eee;
-
 }
 
 .footer p {
   margin-top: 30px;
   padding: 0px auto;
 }
+
+
+.pagination .active a {
+  font-family: ‘Open Sans’, Arial, serif !important;
+  border: 1px solid #17a2b8 !important;
+  color: #ffffff !important;
+  background-color: #17a2b8 !important;
+  }
