@@ -1,1 +1,9 @@
-<h3>Hello World!dddddddddddddd</h3>
+<h4>
+  Found <span style="color:red;"><%= pluralize(@products.size, 'product') %></span>
+  for the search term "<%= params[:search_term] %> and  <span style="color:red;"><%= @cate.name %> </span>".
+</h4>
+
+<div class="row d-flex justify-content-center d-flex flex-row bd-highlight mb-3">
+  <%= render partial: 'products/product',
+             collection: @products %>
+</div>

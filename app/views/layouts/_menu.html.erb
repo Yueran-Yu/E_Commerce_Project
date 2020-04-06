@@ -15,12 +15,10 @@
            <%= link_to 'About', permalink_path('about_us'), class:"nav-link text-muted" %>
           </li>
           <li class="nav-item">
-          <%= link_to 'Contact Us', permalink_path('contact'), class:"nav-link  text-muted" %>
+          <%= link_to 'Contact Us', permalink_path('contact'), class:"nav-link text-muted" %>
           </li>
-          <li class="nav-item">
-          <form class="form-inline my-2 my-lg-0 pt-1">
+          <li class="nav-item search_form">
                 <%= render partial:"products/search_form" %>
-          </form>
           </li>
           <li class="nav-item">
               <%= link_to '', permalink_path('contact'), class: "nav-link fa fa-shopping-cart icon-cog "%>
@@ -43,9 +41,7 @@
               <a class="dropdown-item " href="#">Personal Information</a>
             </div>
           </li>
-
         </ul>
-
       </div>
     </nav>
 

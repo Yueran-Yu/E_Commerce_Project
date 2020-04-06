@@ -6,36 +6,30 @@
 *{
   margin: 0;
   padding: 0;
-}
-
-body{
-  position: relative;
-  height: 100%;
 
 }
 
-.container-md{
-  /*保证footer是相对于container位置绝对定位*/
+html, body{
   height:100%;
-  /*设置padding-bottom值大于等于footer的height值，以保证main的内容能够全部显示出来而不被footer遮盖；*/
-  padding-top: 50px;
-  padding-bottom: 220px;
-  box-sizing: border-box;
+}
+
+.hope_fullpage
+{
+  min-height: 100%;
+  padding-top: 30px;
+  padding-bottom: 50px;
 }
 
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  padding: 0;
-  margin: 0;
   width: 100%;
+  text-align: center;
   height: 80px;  /* footer的高度一定要是固定值*/
   background: #fafafa;
   border-top: solid 1px #eee;
 }
+
+
 
 .footer p {
   margin-top: 30px;
@@ -53,7 +47,7 @@ body{
   .icon-cog
   {
     color:#17a2b8 !important;
-    padding-top: 10px;
+    padding-top: 6px;
     margin-left:2px;
     font-size: 1.6rem !important;
   }
@@ -62,4 +56,9 @@ body{
 {
   color:#6d757d !important;
   border: 1px solid #6d757d;
+}
+
+.search_form
+{
+  margin-top: 3px;
 }

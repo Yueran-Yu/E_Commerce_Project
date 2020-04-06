@@ -12,13 +12,7 @@ Rails.application.routes.draw do
   resources 'products', only: %i[index show]
   get 'categories', to: 'categories#index'
 
-
-
-
   get 'search', to: 'products#search', as: 'search' #search_path
-
-
-
 
   get '/p/:permalink', to: 'pages#permalink', as: 'permalink'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

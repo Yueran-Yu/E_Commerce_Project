@@ -1,5 +1,3 @@
-
-
     <div class="row">
         <div class="col-sm-4 mt-2">
         <div class="card">
@@ -12,7 +10,6 @@
               <ul class="list-group">
                 <% @categories.each do |ca| %>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
-
                       <h6><%= link_to ca.name, products_path(cate: ca.id), class:"text-reset"%></h6>
                       <span class="badge badge-primary badge-info" ><%= ca.products.count %></span>
                     </li>
@@ -33,7 +30,7 @@
                           <p>There are no products available.</p>
                         <% else %>
                           <% @products.each do |product|  %>
-                            <div>
+                            <div class="col">
 
                                 <div class="card text-center ml-4 mb-4 p-2 " style="width: 11rem; height: 23rem;">
                                   <% if product.image.empty? %>
