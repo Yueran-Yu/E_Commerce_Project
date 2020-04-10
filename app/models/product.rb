@@ -6,6 +6,6 @@ class Product < ApplicationRecord
   has_one_attached :active_image
 
   validates :description, :discount_rate, presence: false
-  paginates_per 10
+  paginates_per 9
 
 end

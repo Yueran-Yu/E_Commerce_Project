@@ -85,4 +85,4 @@ end
 Page.create(title: "About Old Movies", content: "Fill this in.", permalink: "about_us")
 Page.create(title: "Contact Us", content: "Fill this in.", permalink: "contact")
 
-# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
