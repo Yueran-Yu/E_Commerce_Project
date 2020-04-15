@@ -17,8 +17,16 @@
 
   <body>
   <%= render 'layouts/menu' %>
+  <% if notice %>
+  <div class="list-group-item list-group-item-success text-center">
     <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    </div>
+  <% end %>
+  <% if alert %>
+    <div  class="list-group-item list-group-item-danger text-center">
+      <p class="alert"><%= alert %></p>
+    </div>
+  <% end %>
   <div class="container-md hope_fullpage">
       <%= yield %>
   </div>

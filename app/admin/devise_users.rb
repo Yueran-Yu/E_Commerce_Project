@@ -1,16 +1,16 @@
-ActiveAdmin.register User do
+ActiveAdmin.register DeviseUser do
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :user_, :name, :email, :pwd, :avatar, :admin
+  # permit_params :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :user_name
   #
   # or
   #
   # permit_params do
-  #   permitted = [:user_, :name, :email, :pwd, :avatar, :admin]
+  #   permitted = [:email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :user_name]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end

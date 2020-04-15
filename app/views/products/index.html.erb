@@ -1,60 +1,10 @@
+
     <div class="row">
-        <div class="col-sm-4 mt-2">
-        <div class="card">
-
-          <div class="card-header">
-          Categories
-          </div>
-
-            <div class ="card-body">
-              <ul class="list-group">
-                <% @categories.each do |ca| %>
-                  <li class="list-group-item d-flex justify-content-between align-items-center">
-                      <h6><%= link_to ca.name, products_path(cate: ca.id), class:"text-reset"%></h6>
-                      <span class="badge badge-primary badge-info" ><%= ca.products.count %></span>
-                    </li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-
-      <div class="col">
-                    <div class="row mt-2 ">
-                      <%= paginate @products, window: 2 %>
-                    </div>
-
-                    <div class="row d-flex justify-content-center d-flex flex-row bd-highlight mb-3 ">
-                        <% if @products.empty? %>
-                          <p>There are no products available.</p>
-                        <% else %>
-                          <% @products.each do |product|  %>
-                            <div class="col">
-
-                                <div class="card text-center ml-4 mb-4 p-2 " style="width: 11rem; height: 23rem;">
-                                  <% if product.image.empty? %>
-                                    <p><%= link_to image_tag(product.active_image.variant(resize_to_limit: [150, 200]).processed, alt: "#{product.name}", class: "border rounded"), product if product.active_image.attached? %></p>
-                                  <% else %>
-                                    <p><%= link_to image_tag("#{product.image}", alt: "#{product.name}", style:"width:150px; height:200px;", class: "border rounded"), product %></p>
-                                  <% end %>
-                                  <div class="card-body" style="overflow: hidden; white-space:nowrap; text-overflow:ellipsis;">
-                                      <small class="card-title" ><strong><%= link_to "#{product.name}", product,class:"text-reset" %></strong> </small>
-                                      <br >
-                                      <small class="card-text">Price: <%= number_to_currency  product.price %> </small>
-                                  </div>
-                                  <small><button type="button" class="btn btn-info mb-2"  style="font-size: 1em; width: 6rem;">Add to Cart</button></small>
-
-                                </div>
-
-
-                            </div>
-                          <% end %>
-                        <% end %>
-                  </div>
-
-                <div class="row mt-4">
-                  <%= paginate @products,window: 2 %>
-                </div>
+     <div class="col-sm-4 mt-2">
+      <%= render 'shared/categories' %>
       </div>
+
+    <div class="col">
+      <%= render 'shared/products' %>
+    </div>
    </div>

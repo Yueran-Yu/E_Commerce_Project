@@ -1,13 +1,16 @@
 
+ <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item"> <%= link_to 'Home', root_path, class:"text-info" %></li>
+      <li class="breadcrumb-item active"><%= link_to @cate.name, products_path(@cate.id), class:"text-info"%></li>
+      <li class="breadcrumb-item active text-info"><%=  @product.name %></li>
 
-
-
-
-
-
+  </ol>
+</nav>
 
 <div class="row mr-2 ml-2 mt-5 pt-5">
   <div class=" col-lg-4 ">
+
 
  <% if @product.image.empty? %>
   <p><%= image_tag(@product.active_image.variant(resize_to_limit: [250, 350]).processed, alt: "#{@product.name}", class: "border rounded") if @product.active_image.attached? %></p>
@@ -18,10 +21,17 @@
 
   </div>
   <div class="col">
-    <div class="row"><h6><%= @product.name %></h6></div>
-    <div class="row"><p><%= number_to_currency @product.price %></p></div>
-    <div class="row"><p><%= @product.is_in_stock %></p></div>
+
+    <div class="row"><h6>Product Name: <%= @product.name %></h6></div>
+    <div class="row"><p>Price: <%= number_to_currency @product.price %></p></div>
+    <div class="row"><p>Category: <%= @cate.name %></h6></div>
+    <% if @product.is_in_stock %>
+        <div class="row"><p> Stock: On </p></div>
+    <% else %>
+        <div class="row"><p> Stock: Off </p></div>
+    <% end %>
     <div class="row"><p><%= @product.discount_rate %></p></div>
-    <div class="row"><small><%= @product.description %></small></div>
+    <div class="row"><small>Description: </small><br >
+                      <small><%= @product.description %></small></div>
   </div>
 </div>

@@ -23,13 +23,22 @@
           <li class="nav-item">
               <%= link_to '', permalink_path('contact'), class: "nav-link fa fa-shopping-cart icon-cog "%>
           </li>
+          <% if devise_user_signed_in? %>
           <li class="nav-item">
-            <%= link_to 'Register', permalink_path('contact'), class:"nav-link text-muted" %>
+          <%= link_to('Log out', destroy_devise_user_session_path, method: :delete, class:"nav-link text-muted") %>
+          </li>
+          <li class="nav-item av-link text-muted">
+             Hello, <%= current_devise_user.email.split('@').first %>!
+          </li>
+          <% else %>
+          <li class="nav-item">
+            <%= link_to('Register', new_devise_user_registration_path, class:"nav-link text-muted") %>
           </li>
           <li class="nav-item">
-          <%= link_to 'Login', permalink_path('contact'), class:"nav-link text-muted" %>
+          <%= link_to('Login', new_devise_user_session_path, class:"nav-link text-muted") %>
           </li>
 
+          <% end %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             My Account
