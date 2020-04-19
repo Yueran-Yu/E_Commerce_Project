@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # # This file should contain all the record creation needed to seed the database with its default values.
 # # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 # #
@@ -9,11 +11,25 @@
 Page.destroy_all
 Product.destroy_all
 Category.destroy_all
-
+Province.destroy_all
 require 'net/http'
 require 'json'
 
-categories = ['Commedy','Crime','Drama','Romance','Western', 'Film Noir']
+Province.create(name: 'Alberta', acronym: 'AB', P_PST: 0, P_GST: 5)
+Province.create(name: 'British Columbia', acronym: 'BC', P_PST: 7, P_GST: 5)
+Province.create(name: 'Manitoba', acronym: 'MB', P_PST: 8, P_GST: 5)
+Province.create(name: 'New Brunswick', acronym: 'NB', P_PST: 10, P_GST: 5, P_HST: 15)
+Province.create(name: 'Newfoundland and Labrador', acronym: 'NL', P_PST: 10, P_GST: 5, P_HST: 15)
+Province.create(name: 'Northwest Territories', acronym: 'NT', P_GST: 5)
+Province.create(name: 'Nova Scotia', acronym: 'NS', P_PST: 10, P_GST: 5, P_HST: 15)
+Province.create(name: 'Nunavut', acronym: 'NU', P_GST: 5)
+Province.create(name: 'Ontario', acronym: 'ON', P_PST: 8, P_GST: 5, P_HST: 13)
+Province.create(name: 'Prince Edward Island', acronym: 'PE', P_PST: 10, P_GST: 5, P_HST: 15)
+Province.create(name: 'Québec',  acronym: 'QC', P_PST: 9.975, P_GST: 5)
+Province.create(name: 'Saskatchewan', acronym: 'SK', P_PST: 6, P_GST: 5)
+Province.create(name: 'Yukon', acronym: 'YK', P_GST: 5)
+
+categories = ['Commedy', 'Crime', 'Drama', 'Romance', 'Western', 'Film Noir']
 
 categories.each do |c|
   Category.create(name: c)
@@ -40,49 +56,47 @@ romance = JSON.parse(romance_response)
 western = JSON.parse(western_response)
 noir = JSON.parse(noir_response)
 
-
 Category.all.each do |cat|
-  commedy.each do |key, value|
+  commedy.each do |_key, value|
     if value['category'] == cat.name
       p = Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
     end
   end
 
-  crime.each do |key, value|
+  crime.each do |_key, value|
     if value['category'] == cat.name
-       p = Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
+      p = Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
     end
   end
 
-  drama.each do |key, value|
+  drama.each do |_key, value|
     if value['category'] == cat.name
-      p = Product.create(name: value['name'], description: value['description'], price: value['price'],image: value['img_link'], is_in_stock: true, category_id: cat.id)
+      p = Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
     end
   end
 
-  romance.each do |key, value|
+  romance.each do |_key, value|
     if value['category'] == cat.name
-      p = Product.create(name: value['name'], description: value['description'], price: value['price'],image: value['img_link'], is_in_stock: true, category_id: cat.id)
+      p = Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
     end
   end
 
-  western.each do |key, value|
+  western.each do |_key, value|
     if value['category'] == cat.name
-      p = Product.create(name: value['name'], description: value['description'], price: value['price'],image: value['img_link'], is_in_stock: true, category_id: cat.id)
+      p = Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
     end
   end
 
-  noir.each do |key, value|
+  noir.each do |_key, value|
     if value['category'] == cat.name
-      p = Product.create(name: value['name'], description: value['description'], price: value['price'],image: value['img_link'], is_in_stock: true, category_id: cat.id)
+      p = Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
     end
   end
 end
 
+Page.create(title: 'About Old Movies', content: 'Fill this in.', permalink: 'about_us')
+Page.create(title: 'Contact Us', content: 'Fill this in.', permalink: 'contact')
 
-
-
-Page.create(title: "About Old Movies", content: "Fill this in.", permalink: "about_us")
-Page.create(title: "Contact Us", content: "Fill this in.", permalink: "contact")
-
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+if Rails.env.development?
+  AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+end
