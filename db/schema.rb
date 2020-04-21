@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_01_054614) do
+ActiveRecord::Schema.define(version: 2020_04_14_002128) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -53,11 +53,11 @@ ActiveRecord::Schema.define(version: 2020_04_01_054614) do
     t.string "city"
     t.string "postcode"
     t.integer "province_id", null: false
-    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "devise_user_id"
+    t.index ["devise_user_id"], name: "index_addresses_on_devise_user_id"
     t.index ["province_id"], name: "index_addresses_on_province_id"
-    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -78,6 +78,20 @@ ActiveRecord::Schema.define(version: 2020_04_01_054614) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "devise_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "user_name"
+    t.boolean "is_admin"
+    t.index ["email"], name: "index_devise_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_devise_users_on_reset_password_token", unique: true
+  end
+
   create_table "order_products", force: :cascade do |t|
     t.integer "order_id", null: false
     t.integer "product_id", null: false
@@ -95,17 +109,17 @@ ActiveRecord::Schema.define(version: 2020_04_01_054614) do
     t.float "PST"
     t.float "HST"
     t.integer "status_id", null: false
-    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "devise_user_id"
+    t.index ["devise_user_id"], name: "index_orders_on_devise_user_id"
     t.index ["status_id"], name: "index_orders_on_status_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "pages", force: :cascade do |t|
-    t.string "permalink"
     t.string "title"
     t.text "content"
+    t.string "permalink"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -139,23 +153,12 @@ ActiveRecord::Schema.define(version: 2020_04_01_054614) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "user_"
-    t.string "name"
-    t.string "email"
-    t.string "pwd"
-    t.string "avatar"
-    t.boolean "admin"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "addresses", "devise_users"
   add_foreign_key "addresses", "provinces"
-  add_foreign_key "addresses", "users"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
+  add_foreign_key "orders", "devise_users"
   add_foreign_key "orders", "statuses"
-  add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
 end

@@ -1,18 +1,10 @@
-<% @categories.each do |ca| %>
-  <h3><%= ca.name %></h3>
-<% end %>
 
-<div>
-  <% if @products.empty? %>
-    <p>There are no products available.</p>
-  <% else %>
-    <% @products.each do |product|  %>
-      <p><%= link_to image_tag("#{product.image}", :alt => "#{product.name}", style:"width:150px; height:200px;"), product %></p>
-      <h3><%= link_to "#{product.name}", product %></h3>
-    <% end %>
-  <% end %>
-</div>
+    <div class="row">
+     <div class="col-sm-4 mt-2">
+      <%= render 'shared/categories' %>
+      </div>
 
-
-
-
+    <div class="col">
+      <%= render 'shared/products' %>
+    </div>
+   </div>

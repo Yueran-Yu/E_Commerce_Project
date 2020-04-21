@@ -1,0 +1,10 @@
+<%= form_with(url: search_path, local:true, method: "get") do %>
+<%= text_field_tag(:search_term, nil, style: "width:150px; height:30px;", class:"option rounded border border-secondary ml-2 mr-2 pl-1", placeholder:"Search...", type:"search") %>
+<% c_array = Category.all { |c| [c.name, c.id] } %>
+<%= select_tag(:category_id, options_from_collection_for_select(c_array,'id', 'name'), include_blank:"All", style:"height: 30px; text-transform: capitalize;", class: " border_color") %>
+<%= submit_tag("Search", style: "font-size:12px;", class: "btn btn-outline-info ml-2", type: "submit") %>
+<% end %>
+
+
+
+

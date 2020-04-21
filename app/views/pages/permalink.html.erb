@@ -1,0 +1,28 @@
+<h2><%= @page.title %></h2>
+<article>
+  <p><%= @page.content %></p>
+  <% if  @page.permalink == 'about_us'%>
+      <h4>Business Overview</h4>
+      <p>Since there are still many people who love old movies, our company
+       has established a website that brings together a large number of top-quality
+       audio-visual products for download or collection by people who love old movies. </p>
+
+       <p>Our company has been operating for 2 years and has 4 employees.
+       In order to have a stable mass base of old movies fans, our company has established such
+       a specialized old movies information platform for everyone to enjoy their favorite old movies. </p>
+
+       <p>The quality of each old movies can be guaranteed, so each user can have an unforgettable
+       experience in our website and only need to pay a small amount of money of each old movie.
+       Any age audiences who love old movies are welcomed to visit our website.</p>
+      <div>
+      <%= image_tag("Old_Movies.png", :alt => "Old_Movies")%>
+      </div>
+  <%elsif @page.permalink == 'contact'  %>
+      <p>Address: 160 Princess St, Winnipeg, MB R3B 1K9</p>
+      <p>Hours: Closes soon: 4 p.m. ⋅ Opens 8 a.m. Thu.</p>
+      <p>Province: Manitoba</p>
+      <p>Phone: (204) 632-3960</p>
+  <% end %>
+
+</article>
+<p>Last updated: <%= @page.updated_at %></p>
