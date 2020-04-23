@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_002128) do
+ActiveRecord::Schema.define(version: 2020_04_21_230840) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -92,6 +92,16 @@ ActiveRecord::Schema.define(version: 2020_04_14_002128) do
     t.index ["reset_password_token"], name: "index_devise_users_on_reset_password_token", unique: true
   end
 
+  create_table "line_items", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "shopping_cart_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "quantity", default: 1
+    t.index ["product_id"], name: "index_line_items_on_product_id"
+    t.index ["shopping_cart_id"], name: "index_line_items_on_shopping_cart_id"
+  end
+
   create_table "order_products", force: :cascade do |t|
     t.integer "order_id", null: false
     t.integer "product_id", null: false
@@ -108,12 +118,10 @@ ActiveRecord::Schema.define(version: 2020_04_14_002128) do
     t.float "GST"
     t.float "PST"
     t.float "HST"
-    t.integer "status_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "devise_user_id"
     t.index ["devise_user_id"], name: "index_orders_on_devise_user_id"
-    t.index ["status_id"], name: "index_orders_on_status_id"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -147,18 +155,23 @@ ActiveRecord::Schema.define(version: 2020_04_14_002128) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "statuses", force: :cascade do |t|
-    t.string "name"
+  create_table "shopping_carts", force: :cascade do |t|
+    t.integer "amount"
+    t.integer "devise_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "line_item_id"
+    t.index ["devise_user_id"], name: "index_shopping_carts_on_devise_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "devise_users"
   add_foreign_key "addresses", "provinces"
+  add_foreign_key "line_items", "products"
+  add_foreign_key "line_items", "shopping_carts"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
   add_foreign_key "orders", "devise_users"
-  add_foreign_key "orders", "statuses"
   add_foreign_key "products", "categories"
+  add_foreign_key "shopping_carts", "devise_users"
 end

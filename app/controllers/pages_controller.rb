@@ -2,6 +2,8 @@ class PagesController < InheritedResources::Base
   http_basic_authenticate_with name: "admin", password: "password", except: :permalink
 
   def permalink
+    fetch_home_data
+
     @page = Page.find_by(permalink: params[:permalink])
     redirect_to root_path if @page.nil?
 

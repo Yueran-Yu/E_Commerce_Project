@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_devise_user!
+  before_action :set_cart, only: [:show, :create]
 
   def index
+    fetch_home_data
     @categories = Category.all.includes(:products)
 
     cate = params[:cate]
@@ -15,8 +16,12 @@ class ProductsController < ApplicationController
   end
 
   def show
+    fetch_home_data
+    set_cart
     @product = Product.find(params[:id])
     @cate = Category.find(@product.category_id)
+
+    @line_item = @cart.line_items.build(product: @product)
 
   end
 

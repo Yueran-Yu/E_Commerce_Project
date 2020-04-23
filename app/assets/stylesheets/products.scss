@@ -2,63 +2,66 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+$footer-background: #fafafa;
+$alignment: center;
+$adjustable-size: 10px;
 
-*{
+%marginTop {
+  margin-top: 30px;
+}
+
+* {
   margin: 0;
   padding: 0;
-
 }
 
-html, body{
-  height:100%;
+html,
+body {
+  height: 100%;
+
+  .hope_fullpage {
+    min-height: 100%;
+    padding-top: 20px + $adjustable-size;
+    padding-bottom: 60px - $adjustable-size;
+  }
+
+  .certain {
+    @extend %marginTop;
+  }
+
+  .footer {
+    width: 100%;
+    text-align: $alignment;
+    height: 80px; /* footer的高度一定要是固定值*/
+    background: $footer-background;
+    border-top: solid 1px #eee;
+
+    p {
+      @extend %marginTop;
+      padding: 0px auto;
+    }
+  }
 }
-
-.hope_fullpage
-{
-  min-height: 100%;
-  padding-top: 30px;
-  padding-bottom: 50px;
-}
-
-
-.footer {
-  width: 100%;
-  text-align: center;
-  height: 80px;  /* footer的高度一定要是固定值*/
-  background: #fafafa;
-  border-top: solid 1px #eee;
-}
-
-
-
-.footer p {
-  margin-top: 30px;
-  padding: 0px auto;
-}
-
 
 .pagination .active a {
   font-family: ‘Open Sans’, Arial, serif !important;
   border: 1px solid #17a2b8 !important;
   color: #ffffff !important;
   background-color: #17a2b8 !important;
-  }
+}
 
-  .icon-cog
-  {
-    color:#17a2b8 !important;
-    padding-top: 6px;
-    margin-left:2px;
-    font-size: 1.6rem !important;
-  }
+.icon-cog {
+  color: #17a2b8 !important;
+  padding-top: 6px;
+  margin-left: 2px;
+  font-size: 1.6rem !important;
+}
 
-.border_color
-{
-  color:#6d757d !important;
+.border_color {
+  color: #6d757d !important;
   border: 1px solid #6d757d;
 }
 
-.search_form
-{
+.search_form {
   margin-top: 3px;
 }

@@ -17,8 +17,10 @@ Rails.application.routes.draw do
 
   resources :pages
 
-
   resources 'products', only: %i[index show]
+  resources :shopping_carts
+  resources :line_items
+
   get 'categories', to: 'categories#index'
 
   get 'search', to: 'products#search', as: 'search' #search_path

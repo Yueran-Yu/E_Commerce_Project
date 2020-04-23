@@ -7,7 +7,6 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.float :GST
       t.float :PST
       t.float :HST
-      t.references :status, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
