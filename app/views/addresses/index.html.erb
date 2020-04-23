@@ -1,2 +1,18 @@
-<h1>Addresses#index</h1>
-<p>Find me in app/views/addresses/index.html.erb</p>
+<h4>Addresses</h4>
+<div> <%= link_to "Add Address", new_address_path, class: "btn btn-info", style: "font-size: 0.8em;" %></div>
+<div class="m-3 row" >
+  <% @addresses.each do |a| %>
+    <div class="card m-3" style="width: 18rem;">
+      <div class="card-body">
+        <h6 class="card-title text-muted"><%= a.full_name %> </h6>
+        <p class="card-subtitle mb-1 text-muted"> <%= a.apartment_number %> <%= a.street_number %>  Street</p>
+        <p class=" mb-1 text-muted" ><%= a.city %> <%= a.province.name %> <%= a.postcode %></p>
+        <p class=" mb-1 text-muted" ><%= a.country %> </p>
+        <p class=" mb-1 text-muted" >Phone Number: <%= a.phone_number %> </p>
+        <%= link_to "Edit", "#", class: "card-link ", style: "font-size: 1em;" %>
+         <%= link_to "Remove", address_path(a.id), method: :delete, data: { confirm: "Are you sure? " }, class: "card-link ", style: "font-size: 1em;" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+

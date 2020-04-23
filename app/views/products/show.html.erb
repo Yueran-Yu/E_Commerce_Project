@@ -38,7 +38,6 @@
     <div class="row"><small><strong> Description: </strong></small><br >
       <small><%= @product.description %></small></div>
     <br >
-
     <p>Quantity: </p>
     <% if current_devise_user %>
       <%= form_for @line_item, url: line_items_path(product_id: @product), method: :post do |f| %>

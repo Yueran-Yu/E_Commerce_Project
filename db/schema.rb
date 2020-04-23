@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_230840) do
+ActiveRecord::Schema.define(version: 2020_04_23_195741) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -52,10 +52,13 @@ ActiveRecord::Schema.define(version: 2020_04_21_230840) do
     t.string "apartment_number"
     t.string "city"
     t.string "postcode"
-    t.integer "province_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "devise_user_id"
+    t.string "phone_number"
+    t.string "country"
+    t.string "full_name"
+    t.integer "province_id"
     t.index ["devise_user_id"], name: "index_addresses_on_devise_user_id"
     t.index ["province_id"], name: "index_addresses_on_province_id"
   end

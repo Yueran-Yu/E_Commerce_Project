@@ -1,6 +1,7 @@
 class LineItemsController < ApplicationController
   before_action :set_cart, only: [:create, :destroy]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+  before_action :fetch_items_count
 
   # GET /line_items
   # GET /line_items.json
@@ -58,7 +59,6 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
-    puts("#### " + params[:id])
     @items = @cart.line_items.where(product_id: params[:id]).destroy_all
 
     respond_to do |format|

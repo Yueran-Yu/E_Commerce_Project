@@ -1,6 +1,13 @@
 class ApplicationController < ActionController::Base
-  def fetch_home_data
-    @all_items_count = ShoppingCart.first.line_items.count
+  def user_helper
+    if devise_user_signed_in?
+      @current_user = current_devise_user
+    end
+    @current_user
+  end
+
+  def fetch_items_count
+    @all_items_count = ShoppingCart.first.line_items.sum { |q| q.quantity }
   end
 
   def set_cart

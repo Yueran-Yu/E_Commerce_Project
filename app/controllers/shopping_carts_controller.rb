@@ -2,10 +2,11 @@ class ShoppingCartsController < ApplicationController
   before_action :set_cart, only: [:index, :show, :create]
   before_action :get_products_array
   before_action :date_card
+  before_action :fetch_items_count
+
   # GET /carts
   # GET /carts.json
   def index
-    fetch_home_data
     set_cart
     get_products_array
   end
