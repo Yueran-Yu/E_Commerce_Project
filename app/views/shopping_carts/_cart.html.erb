@@ -1,0 +1,32 @@
+<table  class="table table-sm">
+  <thead>
+    <tr scope="col" class="table-info text-center">
+      <th scope="col">Line No.</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total</th>
+      <th scope="col" >Action</th>
+    </tr>
+    </thead>
+    <tbody>
+      <p style="display: none;"><%= i = 0 %></p>
+      <p style="display: none;"> <%= subtotal = 0 %> </p>
+    <% items_array.each do |line_item| %>
+      <tr >
+        <td class="text-center" scope="row"> <%= i += 1 %></td>
+        <td class="text-center" > <%= line_item[0] %> </td>
+        <td class="text-center"> <%= number_to_currency line_item[1] %></td>
+        <td class="text-center"> <%= line_item[2] %></td>
+        <td class="text-center"> <%= number_to_currency (line_item[1] * line_item[2]) %></td>
+        <p style="display: none;"><%= subtotal += (line_item[1] * line_item[2]) %></p>
+        <td class="text-center"> <%= link_to "Remove", line_item_path(line_item[3]), method: :delete, data: { confirm: "Are you sure? " }, class: "btn btn-warning", style: "font-size: 0.8em;" %></td>
+      </tr>
+    <% end %>
+    <tr class="table-active">
+        <th colspan="4" >Date: <%= @date %></th>
+        <th>SubTotal: </th>
+        <th><%= number_to_currency subtotal %> </th>
+      </tr>
+  </tbody>
+</table>

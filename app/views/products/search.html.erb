@@ -1,0 +1,14 @@
+<h4>
+  Found <span style="color:red;"><%= pluralize(@products.size, 'product') %></span>
+  for the search term "<%= params[:search_term] %>  in  <span style="color:red;">
+    <% if @cate != nil %>
+      <%= @cate.name %>
+    <% else %>
+      <%= 'All' %>
+    <% end %>
+  </span>".
+</h4>
+<div class="row d-flex justify-content-center d-flex flex-row bd-highlight mb-3">
+  <%= render partial: 'shared/search_result',
+             collection: @products %>
+</div>

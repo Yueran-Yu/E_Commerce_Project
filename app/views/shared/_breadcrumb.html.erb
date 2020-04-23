@@ -1,0 +1,11 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+
+      <% if !category.nil? %>
+      <li class="breadcrumb-item"> <%= link_to 'Home', root_path, class:"text-info" %></li>
+      <li class="breadcrumb-item active"><%= link_to category.name, products_path(category.id), class:"text-info"%></li>
+      <% else %>
+      <li class="breadcrumb-item"> <%= link_to 'Home', root_path, class:"text-info" %></li>
+      <% end %>
+  </ol>
+</nav>
