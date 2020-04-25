@@ -6,80 +6,80 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Province.destroy_all
-# Page.destroy_all
-# Product.destroy_all
-# Category.destroy_all
+Page.destroy_all
+Product.destroy_all
+Category.destroy_all
 
-# require 'net/http'
-# require 'json'
+require "net/http"
+require "json"
 
-# categories = ['Commedy','Crime','Drama','Romance','Western', 'Film Noir']
+categories = ["Commedy", "Crime", "Drama", "Romance", "Western", "Film Noir"]
 
-# categories.each do |c|
-#   Category.create(name: c)
-# end
+categories.each do |c|
+  Category.create(name: c)
+end
 
-# commedy_uri = URI('https://raw.githubusercontent.com/Yueran-Yu/Scrape-Web-Data/master/OldMoives/Outputs/commedy.json')
-# crime_uri = URI('https://raw.githubusercontent.com/Yueran-Yu/Scrape-Web-Data/master/OldMoives/Outputs/crime.json')
-# drama_uri = URI('https://raw.githubusercontent.com/Yueran-Yu/Scrape-Web-Data/master/OldMoives/Outputs/drama.json')
-# romance_uri = URI('https://raw.githubusercontent.com/Yueran-Yu/Scrape-Web-Data/master/OldMoives/Outputs/romance.json')
-# western_uri = URI('https://raw.githubusercontent.com/Yueran-Yu/Scrape-Web-Data/master/OldMoives/Outputs/western.json')
-# noir_uri = URI('https://raw.githubusercontent.com/Yueran-Yu/Scrape-Web-Data/master/OldMoives/Outputs/film_noir.json')
+commedy_uri = URI("https://raw.githubusercontent.com/Yueran-Yu/Scrape-Web-Data/master/OldMoives/Outputs/commedy.json")
+crime_uri = URI("https://raw.githubusercontent.com/Yueran-Yu/Scrape-Web-Data/master/OldMoives/Outputs/crime.json")
+drama_uri = URI("https://raw.githubusercontent.com/Yueran-Yu/Scrape-Web-Data/master/OldMoives/Outputs/drama.json")
+romance_uri = URI("https://raw.githubusercontent.com/Yueran-Yu/Scrape-Web-Data/master/OldMoives/Outputs/romance.json")
+western_uri = URI("https://raw.githubusercontent.com/Yueran-Yu/Scrape-Web-Data/master/OldMoives/Outputs/western.json")
+noir_uri = URI("https://raw.githubusercontent.com/Yueran-Yu/Scrape-Web-Data/master/OldMoives/Outputs/film_noir.json")
 
-# commedy_response = Net::HTTP.get(commedy_uri)
-# crime_response = Net::HTTP.get(crime_uri)
-# drama_response = Net::HTTP.get(drama_uri)
-# romance_response = Net::HTTP.get(romance_uri)
-# western_response = Net::HTTP.get(western_uri)
-# noir_response = Net::HTTP.get(noir_uri)
+commedy_response = Net::HTTP.get(commedy_uri)
+crime_response = Net::HTTP.get(crime_uri)
+drama_response = Net::HTTP.get(drama_uri)
+romance_response = Net::HTTP.get(romance_uri)
+western_response = Net::HTTP.get(western_uri)
+noir_response = Net::HTTP.get(noir_uri)
 
-# commedy = JSON.parse(commedy_response)
-# crime = JSON.parse(crime_response)
-# drama = JSON.parse(drama_response)
-# romance = JSON.parse(romance_response)
-# western = JSON.parse(western_response)
-# noir = JSON.parse(noir_response)
+commedy = JSON.parse(commedy_response)
+crime = JSON.parse(crime_response)
+drama = JSON.parse(drama_response)
+romance = JSON.parse(romance_response)
+western = JSON.parse(western_response)
+noir = JSON.parse(noir_response)
 
-# Category.all.each do |cat|
-#   commedy.each do |key, value|
-#     if value['category'] == cat.name
-#       p = Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
-#     end
-#   end
+Category.all.each do |cat|
+  commedy.each do |key, value|
+    if value["category"] == cat.name
+      p = Product.create(name: value["name"], description: value["description"], price: value["price"], image: value["img_link"], is_in_stock: true, category_id: cat.id)
+    end
+  end
 
-#   crime.each do |key, value|
-#     if value['category'] == cat.name
-#        p = Product.create(name: value['name'], description: value['description'], price: value['price'], image: value['img_link'], is_in_stock: true, category_id: cat.id)
-#     end
-#   end
+  crime.each do |key, value|
+    if value["category"] == cat.name
+      p = Product.create(name: value["name"], description: value["description"], price: value["price"], image: value["img_link"], is_in_stock: true, category_id: cat.id)
+    end
+  end
 
-#   drama.each do |key, value|
-#     if value['category'] == cat.name
-#       p = Product.create(name: value['name'], description: value['description'], price: value['price'],image: value['img_link'], is_in_stock: true, category_id: cat.id)
-#     end
-#   end
+  drama.each do |key, value|
+    if value["category"] == cat.name
+      p = Product.create(name: value["name"], description: value["description"], price: value["price"], image: value["img_link"], is_in_stock: true, category_id: cat.id)
+    end
+  end
 
-#   romance.each do |key, value|
-#     if value['category'] == cat.name
-#       p = Product.create(name: value['name'], description: value['description'], price: value['price'],image: value['img_link'], is_in_stock: true, category_id: cat.id)
-#     end
-#   end
+  romance.each do |key, value|
+    if value["category"] == cat.name
+      p = Product.create(name: value["name"], description: value["description"], price: value["price"], image: value["img_link"], is_in_stock: true, category_id: cat.id)
+    end
+  end
 
-#   western.each do |key, value|
-#     if value['category'] == cat.name
-#       p = Product.create(name: value['name'], description: value['description'], price: value['price'],image: value['img_link'], is_in_stock: true, category_id: cat.id)
-#     end
-#   end
+  western.each do |key, value|
+    if value["category"] == cat.name
+      p = Product.create(name: value["name"], description: value["description"], price: value["price"], image: value["img_link"], is_in_stock: true, category_id: cat.id)
+    end
+  end
 
-#   noir.each do |key, value|
-#     if value['category'] == cat.name
-#       p = Product.create(name: value['name'], description: value['description'], price: value['price'],image: value['img_link'], is_in_stock: true, category_id: cat.id)
-#     end
-#   end
-# end
+  noir.each do |key, value|
+    if value["category"] == cat.name
+      p = Product.create(name: value["name"], description: value["description"], price: value["price"], image: value["img_link"], is_in_stock: true, category_id: cat.id)
+    end
+  end
+end
 
-# Page.create(title: "About Old Movies", content: "Fill this in.", permalink: "about_us")
-# Page.create(title: "Contact Us", content: "Fill this in.", permalink: "contact")
+Page.create(title: "About Old Movies", content: "Fill this in.", permalink: "about_us")
+Page.create(title: "Contact Us", content: "Fill this in.", permalink: "contact")
 
 prov = [["Alberta", "AB", 0.05, 0.00, 0.00],
         ["British Columbia", "BC", 0.05, 0.07, 0.00],
