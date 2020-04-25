@@ -3,7 +3,6 @@ class ProductsController < ApplicationController
   before_action :fetch_items_count
   before_action :user_helper
 
-
   def index
     @categories = Category.all.includes(:products)
 
@@ -21,7 +20,9 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @cate = Category.find(@product.category_id)
 
-    @line_item = @cart.line_items.build(product: @product)
+    if @cart
+      @line_item = @cart.line_items.build(product: @product)
+    end
   end
 
   # GET /search/?search_temr = user + search +terms
