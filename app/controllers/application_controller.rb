@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
   end
 
   def fetch_items_count
-    unless ShoppingCart.first.nil?
+    if ShoppingCart.first.nil?
+      @all_items_count = 0
+    else
       @all_items_count = ShoppingCart.first.line_items.sum { |q| q.quantity }
     end
   end
