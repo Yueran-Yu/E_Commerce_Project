@@ -2,13 +2,20 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+# movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+# Character.create(name: 'Luke', movie: movies.first)
+
+LineItem.destroy_all
+ShoppingCart.destroy_all
+OrderProduct.destroy_all
+Order.destroy_all
+Address.destroy_all
 Province.destroy_all
 Page.destroy_all
 Product.destroy_all
 Category.destroy_all
+DeviseUser.destroy_all
 
 require "net/http"
 require "json"
@@ -99,4 +106,4 @@ prov.each do |p|
   Province.create(name: p[0], acronym: p[1], P_GST: p[2], P_PST: p[3], P_HST: p[4])
 end
 
-# AdminUser.create!(email: "admin@example.com", password: "password", password_confirmation: "password") if Rails.env.development?
+AdminUser.create!(email: "admin@example.com", password: "password", password_confirmation: "password") if Rails.env.development?
