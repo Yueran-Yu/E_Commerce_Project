@@ -38,6 +38,7 @@
           <%= link_to("Login", new_devise_user_session_path, class: "nav-link text-muted") %>
         </li>
       <% end %>
+      <% if devise_user_signed_in? %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           My Account
@@ -49,6 +50,7 @@
           <a class="dropdown-item " href="#">Personal Information</a>
         </div>
       </li>
+      <% end %>
     </ul>
   </div>
 </nav>
