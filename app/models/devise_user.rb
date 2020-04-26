@@ -9,6 +9,4 @@ class DeviseUser < ApplicationRecord
   has_many :addresses
   has_one :shopping_cart
   has_one_attached :image
-
 end
-

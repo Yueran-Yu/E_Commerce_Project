@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_cart, only: [:search, :show, :create]
+  # before_action :set_cart, only: [:search, :show, :create]
   before_action :fetch_items_count
   before_action :user_helper
 
@@ -20,8 +20,9 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @cate = Category.find(@product.category_id)
 
-    if @cart
-      @line_item = @cart.line_items.build(product: @product)
+    @line_item = LineItem.new do |l|
+      l.product_id = @product.id
+      l.shopping_cart_id = @cart.id
     end
   end
 

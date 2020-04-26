@@ -8,7 +8,8 @@ class ShoppingCartsController < ApplicationController
   # GET /carts.json
   def index
     set_cart
-    get_products_array
+    # get_products_array
+    puts("### #{@current_user.inspect}")
   end
 
   def show

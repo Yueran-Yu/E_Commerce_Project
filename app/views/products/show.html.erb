@@ -38,8 +38,8 @@
     <div class="row"><small><strong> Description: </strong></small><br >
       <small><%= @product.description %></small></div>
     <br >
-    <p>Quantity: </p>
     <% if current_devise_user %>
+    <p>Quantity: </p>
       <%= form_for @line_item, url: line_items_path(product_id: @product), method: :post do |f| %>
         <%= f.hidden_field :product_id, :value => @product.id %>
         <%= f.number_field :quantity, :vaue => 1, :min => 1, class: "rounded-sm pt-1 pb-1", style: "width:100px;" %>
