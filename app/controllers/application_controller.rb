@@ -7,17 +7,20 @@ class ApplicationController < ActionController::Base
   end
 
   def fetch_items_count
-    if ShoppingCart.first.nil?
-      @all_items_count = 0
+    if devise_user_signed_in?
+      if current_devise_user.shopping_cart.nil?
+        @all_items_count = 0
+      else
+        @all_items_count = current_devise_user.shopping_cart.line_items.sum { |q| q.quantity }
+      end
     else
-      @all_items_count = ShoppingCart.first.line_items.sum { |q| q.quantity }
+      @all_items_count = 0
     end
+    return @all_items_count
   end
 
   def set_cart
-    @cart = ShoppingCart.find(session[:cart_id])
-  rescue ActiveRecord::RecordNotFound
-    if devise_user_signed_in?
+    if devise_user_signed_in? && current_devise_user.shopping_cart_id.nil?
       user_id = current_devise_user.id
       @cart = ShoppingCart.create(devise_user_id: user_id)
       current_devise_user.shopping_cart_id = @cart.id
@@ -25,7 +28,8 @@ class ApplicationController < ActionController::Base
       puts("######  #{@cart.inspect}")
       puts("######  #{current_devise_user.inspect}")
       puts("######  #{current_devise_user.errors.messages}")
-      session[:cart_id] = @cart.id
+    else
+      @cart = current_devise_user.shopping_cart
     end
     return @cart
   end
@@ -33,16 +37,9 @@ class ApplicationController < ActionController::Base
   def get_products_array
     if devise_user_signed_in?
       @items_array = []
-      all_items = @current_devise_user.shopping_cart.line_items
-      # find the unique product
-      all_items.group(:product_id).each do |outside|
-        total_quantity_each_product = 0
-        all_items.each do |inside|
-          if outside.product.id == inside.product.id
-            total_quantity_each_product += inside.quantity
-          end
-        end
-        @items_array << [outside.product.name, outside.product.price, total_quantity_each_product, outside.product.id]
+      all_i = current_devise_user.shopping_cart.line_items.group(:product_id).sum(:quantity)
+      all_i.each do |k, v|
+        @items_array << [Product.find(k).name, Product.find(k).price, v, k]
       end
       @items_array
     else

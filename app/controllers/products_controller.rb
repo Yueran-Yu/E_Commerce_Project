@@ -24,6 +24,13 @@ class ProductsController < ApplicationController
       l.product_id = @product.id
       l.shopping_cart_id = @cart.id
     end
+
+    # all_i = current_devise_user.shopping_cart.line_items.group(:product_id).sum(:quantity)
+    # all_i.each do |k, v|
+    #   puts("#####  #{Product.find(k).name}")
+    #   puts("#####  #{v.inspect}")
+    # end
+    # puts("#####  #{all_i.inspect}")
   end
 
   # GET /search/?search_temr = user + search +terms
