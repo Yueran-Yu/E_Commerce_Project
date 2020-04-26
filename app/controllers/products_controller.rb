@@ -42,5 +42,8 @@ class ProductsController < ApplicationController
       @products = Category.find(params[:category_id]).products.where("name LIKE ?", "%#{params[:search_term]}%")
       @cate = Category.find(params[:category_id])
     end
+    @products.each do |p|
+      puts("#####   #{p.id}")
+    end
   end
 end
