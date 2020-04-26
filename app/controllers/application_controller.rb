@@ -20,16 +20,20 @@ class ApplicationController < ActionController::Base
   end
 
   def set_cart
-    if devise_user_signed_in? && current_devise_user.shopping_cart_id.nil?
-      user_id = current_devise_user.id
-      @cart = ShoppingCart.create(devise_user_id: user_id)
-      current_devise_user.shopping_cart_id = @cart.id
-      current_devise_user.save
-      puts("######  #{@cart.inspect}")
-      puts("######  #{current_devise_user.inspect}")
-      puts("######  #{current_devise_user.errors.messages}")
+    if devise_user_signed_in?
+      if current_devise_user.shopping_cart_id.nil?
+        user_id = current_devise_user.id
+        @cart = ShoppingCart.create(devise_user_id: user_id)
+        current_devise_user.shopping_cart_id = @cart.id
+        current_devise_user.save
+        puts("######  #{@cart.inspect}")
+        puts("######  #{current_devise_user.inspect}")
+        puts("######  #{current_devise_user.errors.messages}")
+      else
+        @cart = current_devise_user.shopping_cart
+      end
     else
-      @cart = current_devise_user.shopping_cart
+      @cart = 0
     end
     return @cart
   end

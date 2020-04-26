@@ -20,9 +20,11 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @cate = Category.find(@product.category_id)
 
-    @line_item = LineItem.new do |l|
-      l.product_id = @product.id
-      l.shopping_cart_id = @cart.id
+    if devise_user_signed_in?
+      @line_item = LineItem.new do |l|
+        l.product_id = @product.id
+        l.shopping_cart_id = @cart.id
+      end
     end
 
     # all_i = current_devise_user.shopping_cart.line_items.group(:product_id).sum(:quantity)
@@ -41,9 +43,6 @@ class ProductsController < ApplicationController
     else
       @products = Category.find(params[:category_id]).products.where("name LIKE ?", "%#{params[:search_term]}%")
       @cate = Category.find(params[:category_id])
-    end
-    @products.each do |p|
-      puts("#####   #{p.id}")
     end
   end
 end
